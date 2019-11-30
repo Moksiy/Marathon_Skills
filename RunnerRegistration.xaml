@@ -9,9 +9,41 @@
       Title="RunnerRegistration">
 
     <Grid>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="119" Margin="654,131,0,0" Stroke="Black" VerticalAlignment="Top" Width="105"/>
         <Rectangle Fill="Gray" HorizontalAlignment="Left" Height="36" Stroke="Black" VerticalAlignment="Top" Width="800"/>
         <Label Content="MARATHON SKILLS 2019&#xD;&#xA;" HorizontalAlignment="Left" Margin="243,0,0,0" VerticalAlignment="Top" FontSize="25" FontFamily="Segoe UI Black" Foreground="#FFD6D6D6" Height="56" Width="325"/>
         <Button Content="Назад" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Label Content="Регистрация бегуна" HorizontalAlignment="Left" Margin="277,36,0,0" VerticalAlignment="Top" FontSize="25" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040"/>
+        <Label HorizontalContentAlignment="Center" Content="Пожалуйста, заполните всю информацию, чтобы зарегистрироваться в качетстве бегуна" HorizontalAlignment="Center" Margin="16,79,4,0" VerticalAlignment="Top" FontSize="17" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" Width="780"/>
+        <Label HorizontalContentAlignment="Right" Content="Email:" HorizontalAlignment="Center" Margin="16,131,635,0" VerticalAlignment="Top" FontSize="17" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" Width="149"/>
+        <TextBox x:Name="EmailAdress" HorizontalAlignment="Left" Height="26" Margin="170,134,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="261" FontSize="15" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" PreviewMouseLeftButtonDown="EmailAdress_PreviewMouseLeftButtonDown"/>
+        <Label HorizontalContentAlignment="Right" Content="Пароль:" HorizontalAlignment="Center" Margin="16,172,635,0" VerticalAlignment="Top" FontSize="17" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" Width="149"/>
+        <TextBox x:Name="Password" HorizontalAlignment="Left" Height="26" Margin="170,175,0,0" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" Width="261" FontSize="15" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" PreviewMouseLeftButtonDown="Password_PreviewMouseLeftButtonDown"/>
+        <Label HorizontalContentAlignment="Right" Content="Повторите пароль:" HorizontalAlignment="Center" Margin="0,215,635,0" VerticalAlignment="Top" FontSize="17" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" Width="165"/>
+        <TextBox x:Name="PasswordRepeat" HorizontalAlignment="Left" Height="26" Margin="170,218,0,0" TextWrapping="Wrap" Text="Повторите пароль" VerticalAlignment="Top" Width="261" FontSize="15" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" PreviewMouseLeftButtonDown="PasswordRepeat_PreviewMouseLeftButtonDown"/>
+        <Label HorizontalContentAlignment="Right" Content="Имя:" HorizontalAlignment="Center" Margin="16,260,635,0" VerticalAlignment="Top" FontSize="17" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" Width="149"/>
+        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="26" Margin="170,263,0,0" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top" Width="261" FontSize="15" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" PreviewMouseLeftButtonDown="Name_PreviewMouseLeftButtonDown"/>
+        <Label HorizontalContentAlignment="Right" Content="Фамилия:" HorizontalAlignment="Center" Margin="16,306,635,0" VerticalAlignment="Top" FontSize="17" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" Width="149"/>
+        <TextBox x:Name="LastName" HorizontalAlignment="Left" Height="26" Margin="170,309,0,0" TextWrapping="Wrap" Text="Фамилия" VerticalAlignment="Top" Width="261" FontSize="15" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" PreviewMouseLeftButtonDown="LastName_PreviewMouseLeftButtonDown"/>
+        <Label HorizontalContentAlignment="Right" Content="Пол:" HorizontalAlignment="Center" Margin="16,353,635,0" VerticalAlignment="Top" FontSize="17" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" Width="149"/>
+        <ComboBox  Name="SEX" HorizontalAlignment="Left" Margin="170,357,0,0" VerticalAlignment="Top" Width="221" Height="24">
+            <TextBlock>Мужской</TextBlock>
+            <TextBlock>Женский</TextBlock>
+        </ComboBox>
+        <Image x:Name="Photo" Source="PHOTO.jpg" HorizontalAlignment="Left" Height="113" Margin="658,134,0,0" VerticalAlignment="Top" Width="100" OpacityMask="#FF747474" />
+        <Button Content="Просмотр" HorizontalAlignment="Left" Margin="683,274,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
+        <Label HorizontalContentAlignment="Center" Content="Фото файл:" HorizontalAlignment="Center" Margin="545,240,147,0" VerticalAlignment="Top" FontSize="17" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" Width="108"/>
+        <TextBox x:Name="PhotoPath" HorizontalAlignment="Left" Height="26" Margin="528,271,0,0" TextWrapping="Wrap" Text="Photo.jpg" VerticalAlignment="Top" Width="150" FontSize="15" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" PreviewMouseLeftButtonDown="SponsorName_Copy4_PreviewMouseLeftButtonDown"/>
+        <Label HorizontalContentAlignment="Right" Content="Дата рождения:" HorizontalAlignment="Center" Margin="461,315,190,0" VerticalAlignment="Top" FontSize="17" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" Width="149"/>
+        <TextBox x:Name="BirthDate" HorizontalAlignment="Left" Height="26" Margin="615,318,0,0" TextWrapping="Wrap" Text="12-12-2000" VerticalAlignment="Top" Width="118" FontSize="15" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" PreviewMouseLeftButtonDown="BirthDate_PreviewMouseLeftButtonDown"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="738,323,0,0" VerticalAlignment="Top" Width="21"/>
+        <Label HorizontalContentAlignment="Right" Content="Страна:" HorizontalAlignment="Center" Margin="461,357,190,0" VerticalAlignment="Top" FontSize="17" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" Width="149"/>
+        <ComboBox x:Name="Country" HorizontalAlignment="Left" Margin="615,361,0,0" VerticalAlignment="Top" Width="143" Height="24">
+            <TextBlock>Дада, из БД</TextBlock>
+            <TextBlock>Чуть попозже...</TextBlock>
+        </ComboBox>
+        <Button Content="Регистрация" HorizontalAlignment="Left" Margin="268,409,0,0" VerticalAlignment="Top" Width="102" Click="Button_Click_1"/>
+        <Button Content="Отмена" HorizontalAlignment="Left" Margin="408,409,0,0" VerticalAlignment="Top" Width="102" Click="Button_Click_2"/>
 
     </Grid>
 </Page>

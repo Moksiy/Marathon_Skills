@@ -96,7 +96,7 @@ namespace WS
         /// <param name="e"></param>
         private void Contacts_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Здесь возможно будут контакты...");
         }
     }
 }
