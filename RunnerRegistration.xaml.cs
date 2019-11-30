@@ -213,6 +213,8 @@ namespace WS
             {
                 //нормалды
                 //Регистрация
+                RegistrationForMarathon mainPage = new RegistrationForMarathon();
+                this.NavigationService.Navigate(mainPage);
             }
         }
 
