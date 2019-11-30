@@ -55,6 +55,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AutorisationForm.xaml.cs">
+      <DependentUpon>AutorisationForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InformationMain.xaml.cs">
+      <DependentUpon>InformationMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MoreInfo.xaml.cs">
+      <DependentUpon>MoreInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RunnerMain.xaml.cs">
+      <DependentUpon>RunnerMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RunnerRegistration.xaml.cs">
+      <DependentUpon>RunnerRegistration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SponsorMain.xaml.cs">
+      <DependentUpon>SponsorMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Thanks.xaml.cs">
+      <DependentUpon>Thanks.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AutorisationForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InformationMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,8 +96,35 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MoreInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RunnerMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RunnerRegistration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SponsorMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Thanks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

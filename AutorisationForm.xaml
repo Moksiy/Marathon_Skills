@@ -1,0 +1,24 @@
+﻿<Page x:Class="WS.AutorisationForm"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WS"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AutorisationForm">
+
+    <Grid>
+        <Rectangle Fill="Gray" HorizontalAlignment="Left" Height="36" Stroke="Black" VerticalAlignment="Top" Width="800"/>
+        <Label Content="MARATHON SKILLS 2019&#xD;&#xA;" HorizontalAlignment="Left" Margin="243,0,0,0" VerticalAlignment="Top" FontSize="25" FontFamily="Segoe UI Black" Foreground="#FFD6D6D6" Height="56" Width="325"/>
+        <Button Content="Назад" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Label Content="Форма авторизации" HorizontalAlignment="Left" Margin="284,41,0,0" VerticalAlignment="Top" FontSize="25" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040"/>
+        <Label Content="Пожалуйста, авторизируйтесь в системе, используя ваш адрес электронной почты и пароль" HorizontalAlignment="Center" Margin="16,84,4,0" VerticalAlignment="Top" FontSize="17" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" Width="780"/>
+        <Label Content="Email:" HorizontalAlignment="Left" Margin="97,121,0,0" VerticalAlignment="Top" FontSize="25" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="52,164,0,0" VerticalAlignment="Top" FontSize="25" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040"/>
+        <Button Content="Login" HorizontalAlignment="Left" Margin="186,231,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="302,231,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
+        <TextBox x:Name="Email" HorizontalAlignment="Left" Height="36" Margin="186,121,0,0" TextWrapping="Wrap" Text="Enter your Email adress" VerticalAlignment="Top" Width="397" FontSize="25" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" PreviewMouseLeftButtonDown="Email_MouseLeftButtonDown"/>
+        <TextBox x:Name="Password" HorizontalAlignment="Left" Height="36" Margin="186,168,0,0" TextWrapping="Wrap" Text="Enter your password" VerticalAlignment="Top" Width="397" FontSize="25" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" PreviewMouseLeftButtonDown="Password_MouseLeftButtonDown"/>
+    </Grid>
+</Page>

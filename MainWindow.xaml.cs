@@ -24,6 +24,8 @@ namespace WS
         public MainWindow()
         {
             InitializeComponent();
+            Page1 mainPage = new Page1();
+            MainPage.NavigationService.Navigate(mainPage);
             StartCounter();
         }
 
@@ -55,41 +57,6 @@ namespace WS
                 });
                 Thread.Sleep(10000);    
             }
-        }
-
-        /// <summary>
-        /// Я хочу стать бегуном
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Runner_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
-        /// <summary>
-        /// Я хочу стать спонсором бегуна
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Sponsor_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// Я хочу знать больше о событии
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Info_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Login_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
