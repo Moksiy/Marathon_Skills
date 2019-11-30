@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WS
 {
     /// <summary>
-    /// Логика взаимодействия для MoreInfo.xaml
+    /// Логика взаимодействия для Runner.xaml
     /// </summary>
-    public partial class MoreInfo : Page
+    public partial class Runner : Page
     {
-        public MoreInfo()
+        public Runner()
         {
             InitializeComponent();
         }
@@ -32,12 +32,22 @@ namespace WS
         /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Page1 info = new Page1();
+            AutorisationForm info = new AutorisationForm();
             this.NavigationService.Navigate(info);
         }
 
         /// <summary>
-        /// Marathon Skills 2019
+        /// Logout
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Регистрация на марафон
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -46,18 +56,9 @@ namespace WS
 
         }
 
+        
         /// <summary>
-        /// Насколько долгий марафон
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void HowLong_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// Предыдущие результаты
+        /// Мои результаты
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -67,32 +68,31 @@ namespace WS
         }
 
         /// <summary>
-        /// Благотворительные организации
+        /// Редактирование профиля
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DonOrganisations_Click(object sender, RoutedEventArgs e)
-        {
-            DonationOrganisationsList donationlist = new DonationOrganisationsList();
-            this.NavigationService.Navigate(donationlist);
-        }
-
-        /// <summary>
-        /// BMI калькулятор
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BMI_Click(object sender, RoutedEventArgs e)
+        private void Redact_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
         /// <summary>
-        /// BMR калькулятор
+        /// Мой спонсор
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BMR_Click(object sender, RoutedEventArgs e)
+        private void Sponsor_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Контакты
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Contacts_Click(object sender, RoutedEventArgs e)
         {
 
         }

@@ -12,5 +12,12 @@
         <Rectangle Fill="Gray" HorizontalAlignment="Left" Height="36" Stroke="Black" VerticalAlignment="Top" Width="800"/>
         <Label Content="MARATHON SKILLS 2019&#xD;&#xA;" HorizontalAlignment="Left" Margin="243,0,0,0" VerticalAlignment="Top" FontSize="25" FontFamily="Segoe UI Black" Foreground="#FFD6D6D6" Height="56" Width="325"/>
         <Button Content="Назад" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Label Content="Подробная информация" HorizontalAlignment="Left" Margin="243,36,0,0" VerticalAlignment="Top" FontSize="25" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040"/>
+        <Button x:Name="MS2019" Content="Marathon Skills 2016" HorizontalAlignment="Left" Margin="38,122,0,0" VerticalAlignment="Top" Width="333" Height="66" FontSize="25" FontFamily="Segoe UI Semibold" Click="Runner_Click"/>
+        <Button x:Name="HowLong" Content="Насколько долгий марафон" HorizontalAlignment="Left" Margin="413,122,0,0" VerticalAlignment="Top" Width="345" Height="66" FontSize="25" FontFamily="Segoe UI Semibold" Click="HowLong_Click"/>
+        <Button x:Name="DonOrganisations" Content="Благотворительные орг." HorizontalAlignment="Left" Margin="413,224,0,0" VerticalAlignment="Top" Width="345" Height="66" FontSize="25" FontFamily="Segoe UI Semibold" Click="DonOrganisations_Click"/>
+        <Button x:Name="BMR" Content="BMR калькулятор" HorizontalAlignment="Left" Margin="413,330,0,0" VerticalAlignment="Top" Width="345" Height="66" FontSize="25" FontFamily="Segoe UI Semibold" Click="BMR_Click"/>
+        <Button x:Name="Results" Content="Предыдущие результаты" HorizontalAlignment="Left" Margin="38,224,0,0" VerticalAlignment="Top" Width="333" Height="66" FontSize="25" FontFamily="Segoe UI Semibold" Click="Results_Click"/>
+        <Button x:Name="BMI" Content="BMI калькулятор" HorizontalAlignment="Left" Margin="38,330,0,0" VerticalAlignment="Top" Width="333" Height="66" FontSize="25" FontFamily="Segoe UI Semibold" Click="BMI_Click"/>
     </Grid>
 </Page>

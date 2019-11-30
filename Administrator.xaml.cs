@@ -16,17 +16,17 @@ using System.Windows.Shapes;
 namespace WS
 {
     /// <summary>
-    /// Логика взаимодействия для MoreInfo.xaml
+    /// Логика взаимодействия для Administrator.xaml
     /// </summary>
-    public partial class MoreInfo : Page
+    public partial class Administrator : Page
     {
-        public MoreInfo()
+        public Administrator()
         {
             InitializeComponent();
         }
 
         /// <summary>
-        /// Назад
+        ///Назад
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -37,31 +37,21 @@ namespace WS
         }
 
         /// <summary>
-        /// Marathon Skills 2019
+        /// Пользователи
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Runner_Click(object sender, RoutedEventArgs e)
+        private void Users_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
         /// <summary>
-        /// Насколько долгий марафон
+        /// Волонтеры
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HowLong_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// Предыдущие результаты
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Results_Click(object sender, RoutedEventArgs e)
+        private void Volonters_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -71,28 +61,27 @@ namespace WS
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DonOrganisations_Click(object sender, RoutedEventArgs e)
-        {
-            DonationOrganisationsList donationlist = new DonationOrganisationsList();
-            this.NavigationService.Navigate(donationlist);
-        }
-
-        /// <summary>
-        /// BMI калькулятор
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BMI_Click(object sender, RoutedEventArgs e)
+        private void Organisations_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
         /// <summary>
-        /// BMR калькулятор
+        /// Инвентарь
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BMR_Click(object sender, RoutedEventArgs e)
+        private void Inventory_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Logout
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
         }

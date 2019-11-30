@@ -55,14 +55,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Administrator.xaml.cs">
+      <DependentUpon>Administrator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AutorisationForm.xaml.cs">
       <DependentUpon>AutorisationForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Coordinator.xaml.cs">
+      <DependentUpon>Coordinator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DonationOrganisationsList.xaml.cs">
+      <DependentUpon>DonationOrganisationsList.xaml</DependentUpon>
     </Compile>
     <Compile Include="InformationMain.xaml.cs">
       <DependentUpon>InformationMain.xaml</DependentUpon>
     </Compile>
     <Compile Include="MoreInfo.xaml.cs">
       <DependentUpon>MoreInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Runner.xaml.cs">
+      <DependentUpon>Runner.xaml</DependentUpon>
     </Compile>
     <Compile Include="RunnerMain.xaml.cs">
       <DependentUpon>RunnerMain.xaml</DependentUpon>
@@ -76,7 +88,19 @@
     <Compile Include="Thanks.xaml.cs">
       <DependentUpon>Thanks.xaml</DependentUpon>
     </Compile>
+    <Page Include="Administrator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AutorisationForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Coordinator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DonationOrganisationsList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -101,6 +125,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Runner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
