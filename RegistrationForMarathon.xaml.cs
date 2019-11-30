@@ -197,6 +197,9 @@ namespace WS
             else
             {
                 //регистрация
+                //Подтверждение регистрации
+                RegConfirm mainPage = new RegConfirm();
+                this.NavigationService.Navigate(mainPage);
             }
         }
 

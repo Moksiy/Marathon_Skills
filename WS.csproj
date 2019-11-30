@@ -73,6 +73,9 @@
     <Compile Include="MoreInfo.xaml.cs">
       <DependentUpon>MoreInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RegConfirm.xaml.cs">
+      <DependentUpon>RegConfirm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegistrationForMarathon.xaml.cs">
       <DependentUpon>RegistrationForMarathon.xaml</DependentUpon>
     </Compile>
@@ -128,6 +131,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RegConfirm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
