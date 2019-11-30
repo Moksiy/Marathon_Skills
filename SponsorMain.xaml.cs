@@ -84,10 +84,110 @@ namespace WS
         /// <param name="e"></param>
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            if(true)
+            bool errors = false;
+            string error = "";
+            //Проверка на корректность введенного имени
+            if (SponsorName.Text.Length > 3)
+            {
+                bool check = false;
+                foreach (char c in SponsorName.Text)
+                {
+                    if (!Char.IsLetter(c)) { check = true; errors = true; }
+                }
+                if (check) { error += "Некорректное Имя\n"; }
+            }
+            else { errors = true; error += "Некорректное Имя\n"; }
+
+            //Проверка на корректность введенного Имени Владельца Карты
+            if (CardOwner.Text.Length > 5)
+            {
+                bool check = false;
+                foreach (char c in CardOwner.Text)
+                {
+
+                    if (!Char.IsLetter(c)) { errors = true; check = true; }
+                }
+                if (check) { error += "Некорректное Имя Владельца Карты\n"; }
+            }
+            else { errors = true; error += "Некорректное Имя Владельца Карты\n"; }
+
+            //Проверка на корректность номера введенного номера карты
+            if (CardNumber.Text.Length == 16)
+            {
+                bool check = false;
+                foreach (char c in CardNumber.Text)
+                {
+                    if (Char.IsLetter(c)) { errors = true; check = true; }
+                }
+                if(check) { error += "Некорректный Номер Карты\n"; }
+            }
+            else
+            {
+                errors = true; error += "Некорректный Номер Карты\n";
+            }
+
+            //проверка на корректность срока действия карты
+            int month = default;
+            //Проверка месяца
+            if (Month.Text.Length > 0 && Month.Text.Length < 3 && int.TryParse(Month.Text, out month))
+            {
+                if (month > 0 && month <= 12)
+                {
+                    //ok
+                }
+                else
+                {
+                    errors = true; error += "Некорректный срок действия карты (месяц)\n";
+                }
+            }
+            else { errors = true; error += "Некорректный срок действия карты (месяц)\n"; }
+            //Проверка года
+            int year = default;
+            int.TryParse(Year.Text, out year);
+            int currentYear = DateTime.Now.Year;
+            int diff = Math.Abs(year - currentYear);
+            if (Year.Text.Length > 0 && Year.Text.Length <= 4 && int.TryParse(Year.Text, out year))
+            {
+                if (diff < 5)
+                {
+                    //Ok
+                }
+                else { errors = true; error += "Некорректный срок действия карты (год)\n"; }
+
+            }
+            else { errors = true; error += "Некорректный срок действия карты (год)\n"; }
+
+            int cvc = default;
+            //Проверка CVC карты
+            if (CVC.Text.Length == 3 && int.TryParse(CVC.Text, out cvc))
+            {
+                //Ok
+            }
+            else
+            {
+                errors = true; error += "Некорректный CVC карты\n";
+            }
+
+            int donation = default;
+            //Проверка пожертвования
+            if (int.TryParse(SumBlock.Text, out donation))
+            {
+                //Ok
+            }
+            else
+            {
+                errors = true; error += "Некорректная сумма пожертвования\n";
+            }
+
+            //Регистрация
+            if (!errors)
             {
                 Thanks thanks = new Thanks();
                 this.NavigationService.Navigate(thanks);
+            }
+            else
+            {
+                MessageBox.Show(error);
             }
         }
 
@@ -98,7 +198,8 @@ namespace WS
         /// <param name="e"></param>
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-
+            Page1 mainPage = new Page1();
+            this.NavigationService.Navigate(mainPage);
         }
 
         private void TextBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
