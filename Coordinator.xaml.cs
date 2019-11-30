@@ -43,7 +43,9 @@ namespace WS
         /// <param name="e"></param>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            //ОТКЛЮЧЕНИЕ ОТ СИСТЕМЫ
+            Page1 info = new Page1();
+            this.NavigationService.Navigate(info);
         }
 
         /// <summary>
