@@ -39,8 +39,6 @@
         <Button Content="" HorizontalAlignment="Left" Margin="738,323,0,0" VerticalAlignment="Top" Width="21"/>
         <Label HorizontalContentAlignment="Right" Content="Страна:" HorizontalAlignment="Center" Margin="461,357,190,0" VerticalAlignment="Top" FontSize="17" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" Width="149"/>
         <ComboBox x:Name="Country" HorizontalAlignment="Left" Margin="615,361,0,0" VerticalAlignment="Top" Width="143" Height="24">
-            <TextBlock>Дада, из БД</TextBlock>
-            <TextBlock>Чуть попозже...</TextBlock>
         </ComboBox>
         <Button Content="Регистрация" HorizontalAlignment="Left" Margin="268,409,0,0" VerticalAlignment="Top" Width="102" Click="Button_Click_1"/>
         <Button Content="Отмена" HorizontalAlignment="Left" Margin="408,409,0,0" VerticalAlignment="Top" Width="102" Click="Button_Click_2"/>

@@ -67,6 +67,7 @@ namespace WS
             else
             {
                 //Проверка на содержание в БД
+
             }
             if(errorb) { MessageBox.Show(error); }
         }

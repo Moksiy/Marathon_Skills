@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
+using System.Data;
+
 
 namespace WS
 {
@@ -20,13 +23,65 @@ namespace WS
     /// </summary>
     public partial class RunnerRegistration : Page
     {
+        SqlConnection connection = new SqlConnection();
+
         public RunnerRegistration()
         {
             InitializeComponent();
-            //Photo.Source = new BitmapImage(new Uri("PHOTO.jpg"));
-            //this.Photo.Source = new BitmapImage(new Uri("PHOTO.jpg", UriKind.Relative)) { CreateOptions = BitmapCreateOptions.IgnoreImageCache };
+
+            //Добавление стран из БД
+            AddCountries();
         }
 
+        /// <summary>
+        /// Добавление стран из БД
+        /// </summary>
+        private async void AddCountries()
+        {
+            //Строка подключения            
+            connection.ConnectionString = @"Data Source=DESKTOP-SJE2N6P\SQLEXPRESS;Initial Catalog=Marathon;Integrated Security=True";
+
+            try
+            {
+                //Открываем подключение
+                await connection.OpenAsync();
+
+                //TEST
+                //MessageBox.Show("Подключение: \n" +
+                //    $"{connection.ConnectionString}\n" +
+                //    $"{connection.Database}\n" +
+                //    $"{connection.DataSource}\n" +
+                //    $"{connection.ServerVersion}\n" +
+                //    $"{connection.State}\n" +
+                //    $"{connection.WorkstationId}\n");
+                //TEST
+
+                //Работа с бд
+                SqlCommand command = new SqlCommand();
+
+                //Получаем страны из БД
+                command.CommandText = "SELECT CountryName FROM Country";
+
+                command.Connection = connection;
+
+                SqlDataReader dataReader = command.ExecuteReader();
+                
+                while(dataReader.Read())
+                { Country.Items.Add(dataReader[0]);}
+                
+
+            }
+            catch (SqlException ex)
+            {
+                //Выводим сообщение об ошибке
+                MessageBox.Show(Convert.ToString(ex));
+            }
+            finally
+            {
+                //В любом случае закрываем подключение
+                connection.Close();
+            }
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Page1 mainPage = new Page1();
@@ -95,20 +150,21 @@ namespace WS
             string errors = "";
             //Проверка введенных значений
             //проверка Email
-            if(EmailAdress.Text.Length>4 && EmailAdress.Text.Contains("@")&& EmailAdress.Text.Contains("."))
+            if (EmailAdress.Text.Length > 4 && EmailAdress.Text.Contains("@") && EmailAdress.Text.Contains("."))
             {
 
-            }else
+            }
+            else
             {
                 errorbool = true; errors += "Некорректный ввод Email\n";
             }
             //Проверка Пароля
-            if(Password.Text.Length >= 6)
+            if (Password.Text.Length >= 6)
             {
                 bool numberinpassword = false;
                 bool charinpassword = false;
                 bool symbolsinpassword = false;
-                foreach(char c in Password.Text)
+                foreach (char c in Password.Text)
                 {
                     if (char.IsLetter(c))
                         charinpassword = true;
@@ -118,7 +174,7 @@ namespace WS
                     if (c == '!' || c == '@' || c == '#' || c == '$' || c == '%' || c == '^')
                         symbolsinpassword = true;
                 }
-                if(numberinpassword && charinpassword && symbolsinpassword)
+                if (numberinpassword && charinpassword && symbolsinpassword)
                 { }
                 else { errorbool = true; errors += "Небезопасный пароль\n"; }
             }
@@ -128,7 +184,7 @@ namespace WS
                 errors += "Слишком короткий пароль🌚\n";
             }
             //проверка повторного пароля
-            if(Password.Text == PasswordRepeat.Text)
+            if (Password.Text == PasswordRepeat.Text)
             {
                 //ок
             }
@@ -138,10 +194,10 @@ namespace WS
                 errors += "Пароли не совпадают\n";
             }
             //проверка имени
-            if(Name.Text.Length >3)
+            if (Name.Text.Length > 3)
             {
                 bool check = false;
-                foreach(char c in Name.Text)
+                foreach (char c in Name.Text)
                 {
                     if (!char.IsLetter(c))
                         check = true;
@@ -152,7 +208,8 @@ namespace WS
                     errors += "Некорректный ввод имени\n";
                 }
             }
-            else {
+            else
+            {
                 errorbool = true;
                 errors += "Некорректный ввод имени\n";
             }
@@ -177,29 +234,32 @@ namespace WS
                 errors += "Некорректный ввод фамилии\n";
             }
             //проверка пола🌚
-            if(SEX.SelectedItem != null)
+            if (SEX.SelectedItem != null)
             {
                 //Ок
             }
-            else {
+            else
+            {
                 errorbool = true;
                 errors += "Не выбран пол\n";
             }
             //проверка даты рождения
             DateTime date = new DateTime();
-            if(DateTime.TryParse(BirthDate.Text, out date))
+            if (DateTime.TryParse(BirthDate.Text, out date))
             {
 
-            }else
+            }
+            else
             {
                 errorbool = true;
                 errors += "Некорректный ввод даты\n";
             }
             //проверка страны(потом из бд)
-            if(Country.SelectedItem != null)
+            if (Country.SelectedItem != null)
             {
 
-            }else
+            }
+            else
             {
                 errorbool = true;
                 errors += "Не выбрана страна\n";
@@ -213,6 +273,7 @@ namespace WS
             {
                 //нормалды
                 //Регистрация
+
                 RegistrationForMarathon mainPage = new RegistrationForMarathon();
                 this.NavigationService.Navigate(mainPage);
             }
@@ -266,7 +327,7 @@ namespace WS
                 img.BeginInit();
                 img.UriSource = new Uri(dialog.FileName);
                 img.EndInit();
-                Photo.Source = img;                
+                Photo.Source = img;
             }
         }
     }
