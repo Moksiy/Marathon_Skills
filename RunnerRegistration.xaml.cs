@@ -46,16 +46,6 @@ namespace WS
                 //Открываем подключение
                 await connection.OpenAsync();
 
-                //TEST
-                //MessageBox.Show("Подключение: \n" +
-                //    $"{connection.ConnectionString}\n" +
-                //    $"{connection.Database}\n" +
-                //    $"{connection.DataSource}\n" +
-                //    $"{connection.ServerVersion}\n" +
-                //    $"{connection.State}\n" +
-                //    $"{connection.WorkstationId}\n");
-                //TEST
-
                 //Работа с бд
                 SqlCommand command = new SqlCommand();
 
@@ -80,8 +70,48 @@ namespace WS
             {
                 //В любом случае закрываем подключение
                 connection.Close();
+                AddGenders();
             }
         }
+
+        /// <summary>
+        /// Добавление стран из БД
+        /// </summary>
+        private async void AddGenders()
+        {
+            //Строка подключения            
+            try
+            {
+                //Открываем подключение
+                await connection.OpenAsync();
+
+                //Работа с бд
+                SqlCommand command = new SqlCommand();
+
+                //Получаем страны из БД
+                command.CommandText = "SELECT Gender FROM Gender";
+
+                command.Connection = connection;
+
+                SqlDataReader dataReader = command.ExecuteReader();
+
+                while (dataReader.Read())
+                { SEX.Items.Add(dataReader[0]); }
+
+
+            }
+            catch (SqlException ex)
+            {
+                //Выводим сообщение об ошибке
+                MessageBox.Show(Convert.ToString(ex));
+            }
+            finally
+            {
+                //В любом случае закрываем подключение
+                connection.Close();
+            }
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Page1 mainPage = new Page1();

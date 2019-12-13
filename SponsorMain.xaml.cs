@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace WS
 {
@@ -20,9 +22,54 @@ namespace WS
     /// </summary>
     public partial class SponsorMain : Page
     {
+        SqlConnection connection = new SqlConnection();
+
         public SponsorMain()
         {
             InitializeComponent();
+
+            //Добавление бегунов из БД
+            AddRunners();
+        }
+
+        /// <summary>
+        /// Добавление стран из БД
+        /// </summary>
+        private async void AddRunners()
+        {
+            //Строка подключения            
+            connection.ConnectionString = @"Data Source=DESKTOP-SJE2N6P\SQLEXPRESS;Initial Catalog=Marathon;Integrated Security=True";
+
+            try
+            {
+                //Открываем подключение
+                await connection.OpenAsync();
+
+                //Работа с бд
+                SqlCommand command = new SqlCommand();
+
+                //Получаем страны из БД
+                command.CommandText = "SELECT DISTINCT FirstName, LastName FROM dbo.Runner INNER JOIN dbo.[User] ON dbo.Runner.Email = dbo.[User].Email";
+
+                command.Connection = connection;
+
+                SqlDataReader dataReader = command.ExecuteReader();
+
+                while (dataReader.Read())
+                { Runners.Items.Add($"{dataReader[0]} {dataReader[1]}"); }
+
+
+            }
+            catch (SqlException ex)
+            {
+                //Выводим сообщение об ошибке
+                MessageBox.Show(Convert.ToString(ex));
+            }
+            finally
+            {
+                //В любом случае закрываем подключение
+                connection.Close();
+            }
         }
 
         /// <summary>
