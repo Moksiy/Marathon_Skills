@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:WS"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Thanks">
+      Title="Thanks" ShowsNavigationUI="False">
 
     <Grid>
         <Rectangle Fill="Gray" HorizontalAlignment="Left" Height="36" Stroke="Black" VerticalAlignment="Top" Width="800"/>

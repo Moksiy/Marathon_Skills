@@ -11,7 +11,7 @@
             <RowDefinition Height="384*"/>
             <RowDefinition Height="137*"/>
         </Grid.RowDefinitions>
-        <Frame x:Name="MainPage" Margin="0,0,-0.4,43.8" Grid.RowSpan="2">
+        <Frame x:Name="MainPage" Margin="0,0,-0.4,43.8" Grid.RowSpan="2" NavigationUIVisibility="Hidden">
 
         </Frame>
         <Grid Margin="0,98,-0.4,-368.2" Name="Countermenu" Grid.Row="1">
