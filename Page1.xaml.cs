@@ -23,6 +23,8 @@ namespace WS
         public Page1()
         {
             InitializeComponent();
+
+            //string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=usersdb;Integrated Security=True";
         }
 
         /// <summary>
