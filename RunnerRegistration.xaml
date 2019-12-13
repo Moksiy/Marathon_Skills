@@ -29,6 +29,7 @@
         <ComboBox  Name="SEX" HorizontalAlignment="Left" Margin="170,357,0,0" VerticalAlignment="Top" Width="221" Height="24">
             <TextBlock>Мужской</TextBlock>
             <TextBlock>Женский</TextBlock>
+            <TextBlock>Рептилия</TextBlock>
         </ComboBox>
         <Image x:Name="Photo" Source="PHOTO.jpg" HorizontalAlignment="Left" Height="113" Margin="658,134,0,0" VerticalAlignment="Top" Width="100" OpacityMask="#FF747474" />
         <Button Content="Просмотр" HorizontalAlignment="Left" Margin="683,274,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>

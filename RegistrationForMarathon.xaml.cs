@@ -53,7 +53,7 @@ namespace WS
         /// <param name="e"></param>
         private void km42_Checked(object sender, RoutedEventArgs e)
         {
-            Summ.Text = Convert.ToString(Convert.ToInt32(Donation.Text) + 145);
+            Summ.Text = Convert.ToString(Convert.ToInt32(Summ.Text) + 145);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace WS
         /// <param name="e"></param>
         private void km42_Unchecked(object sender, RoutedEventArgs e)
         {
-            Summ.Text = Convert.ToString(Convert.ToInt32(Donation.Text) - 145);
+            Summ.Text = Convert.ToString(Convert.ToInt32(Summ.Text) - 145);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace WS
         /// <param name="e"></param>
         private void km21_Checked(object sender, RoutedEventArgs e)
         {
-            Summ.Text = Convert.ToString(Convert.ToInt32(Donation.Text) + 75);
+            Summ.Text = Convert.ToString(Convert.ToInt32(Summ.Text) + 75);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace WS
         /// <param name="e"></param>
         private void km21_Unchecked(object sender, RoutedEventArgs e)
         {
-            Summ.Text = Convert.ToString(Convert.ToInt32(Donation.Text) - 75);
+            Summ.Text = Convert.ToString(Convert.ToInt32(Summ.Text) - 75);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace WS
         /// <param name="e"></param>
         private void km5_Checked(object sender, RoutedEventArgs e)
         {
-            Summ.Text = Convert.ToString(Convert.ToInt32(Donation.Text) + 20);
+            Summ.Text = Convert.ToString(Convert.ToInt32(Summ.Text) + 20);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace WS
         /// <param name="e"></param>
         private void km5_Unchecked(object sender, RoutedEventArgs e)
         {
-            Summ.Text = Convert.ToString(Convert.ToInt32(Donation.Text) - 20);
+            Summ.Text = Convert.ToString(Convert.ToInt32(Summ.Text) - 20);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace WS
         /// <param name="e"></param>
         private void B_Checked(object sender, RoutedEventArgs e)
         {
-            Summ.Text = Convert.ToString(Convert.ToInt32(Donation.Text) + 45);
+            Summ.Text = Convert.ToString(Convert.ToInt32(Summ.Text) + 45);
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace WS
         /// <param name="e"></param>
         private void C_Checked(object sender, RoutedEventArgs e)
         {
-            Summ.Text = Convert.ToString(Convert.ToInt32(Donation.Text) + 20);
+            Summ.Text = Convert.ToString(Convert.ToInt32(Summ.Text) + 20);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace WS
         /// <param name="e"></param>
         private void B_Unchecked(object sender, RoutedEventArgs e)
         {            
-            Summ.Text = Convert.ToString(Convert.ToInt32(Donation.Text) - 45);
+            Summ.Text = Convert.ToString(Convert.ToInt32(Summ.Text) - 45);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace WS
         /// <param name="e"></param>
         private void C_Unchecked(object sender, RoutedEventArgs e)
         {
-            Summ.Text = Convert.ToString(Convert.ToInt32(Donation.Text) - 20);
+            Summ.Text = Convert.ToString(Convert.ToInt32(Summ.Text) - 20);
         }
 
         /// <summary>
@@ -234,7 +234,7 @@ namespace WS
         /// <param name="e"></param>
         private void Donation_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-
+            //Popozhe...
         }
     }
 }

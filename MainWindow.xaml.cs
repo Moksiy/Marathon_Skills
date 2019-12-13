@@ -24,7 +24,6 @@ namespace WS
     /// </summary>
     public partial class MainWindow : Window
     {
-        SqlConnection connection = new SqlConnection();
 
         public MainWindow()
         {
@@ -32,44 +31,8 @@ namespace WS
             Page1 mainPage = new Page1();
             MainPage.NavigationService.Navigate(mainPage);
             StartCounter();
-            ConnectDataBase();
         }
 
-        /// <summary>
-        /// Подключение БД
-        /// </summary>
-        private async void ConnectDataBase()
-        {
-            //Строка подключения            
-            connection.ConnectionString = @"Data Source=DESKTOP-SJE2N6P\SQLEXPRESS;Initial Catalog=Marathon;Integrated Security=True";
-            
-            try
-            {
-                //Открываем подключение
-                await connection.OpenAsync();
-
-                //TEST
-                MessageBox.Show("Подключение: \n" +
-                    $"{connection.ConnectionString}\n" +
-                    $"{connection.Database}\n" +
-                    $"{connection.DataSource}\n" +
-                    $"{connection.ServerVersion}\n" +
-                    $"{connection.State}\n" +
-                    $"{connection.WorkstationId}\n");
-                //TEST
-
-            }
-            catch (SqlException ex)
-            {
-                //Выводим сообщение об ошибке
-                MessageBox.Show(Convert.ToString(ex));
-            }
-            finally
-            {
-                //В любом случае закрываем подключение
-                connection.Close();
-            }
-        }
 
         /// <summary>
         /// Запуск паточека
