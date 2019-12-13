@@ -303,6 +303,59 @@ namespace WS
             {
                 //нормалды
                 //Регистрация
+                try
+                {
+                    //Открываем подключение
+                    connection.OpenAsync();
+
+                    //Работа с бд
+                    SqlCommand command = new SqlCommand();
+
+                    //Отправляем строки в бд
+                    //-------------------------------------------------------------------------------
+                    //Работа с таблицей USER
+                    string com = String.Format("INSERT INTO User" +
+                        "(Email, Password, FirstName, LastName, RoleId) " +
+                        "Values(@Email, @Password, @FirstName, @LastName, @RoleId)");
+
+                    //Добавляем параметры
+                    SqlCommand cmd = new SqlCommand(com, this.connection);
+                    cmd.Parameters.AddWithValue("@Email", EmailAdress.Text);
+                    cmd.Parameters.AddWithValue("@Password", Password.Text);
+                    cmd.Parameters.AddWithValue("@FirstName", Name.Text);
+                    cmd.Parameters.AddWithValue("@LastName", LastName.Text);
+                    cmd.Parameters.AddWithValue("@RoleId", "R");
+
+                    //Отправка
+                    cmd.ExecuteNonQuery();
+
+                    //----------------------------------------------------------------------------------
+                    //Работа с таблицей Runner
+                    com = String.Format("INSERT INTO Runner" +
+                        "(RunnerId, Email, Gender, DateOfBirth, CountryCode) " +
+                        "Values(@RunnerId, @Email, @Gender, @DateOfBirth, @CountryCode)");
+
+                    //Добавляем параметры
+                    cmd = new SqlCommand(com, this.connection);
+                    cmd.Parameters.AddWithValue("@RunnerId", /*DODELAAT*/1);
+                    cmd.Parameters.AddWithValue("@Email", EmailAdress.Text);
+                    cmd.Parameters.AddWithValue("@Gender", SEX.Text);
+                    cmd.Parameters.AddWithValue("@DateOfBirth", BirthDate.Text);
+                    cmd.Parameters.AddWithValue("@CountryCode", /*DODELAT*/1);
+
+                    //Отправка
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    //Выводим сообщение об ошибке
+                    MessageBox.Show(Convert.ToString(ex));
+                }
+                finally
+                {
+                    //В любом случае закрываем подключение
+                    connection.Close();                    
+                }
 
                 RegistrationForMarathon mainPage = new RegistrationForMarathon();
                 this.NavigationService.Navigate(mainPage);
