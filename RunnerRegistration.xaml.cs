@@ -55,9 +55,11 @@ namespace WS
                 command.Connection = connection;
 
                 SqlDataReader dataReader = command.ExecuteReader();
-                
-                while(dataReader.Read())
-                { Country.Items.Add(dataReader[0]);}
+
+                while (dataReader.Read())
+                {
+                    Country.Items.Add(dataReader[0]);
+                }
                 
 
             }
@@ -178,6 +180,8 @@ namespace WS
         {
             bool errorbool = false;
             string errors = "";
+            string countryCode = "";
+            int runnerId = 0;
             //Проверка введенных значений
             //проверка Email
             if (EmailAdress.Text.Length > 4 && EmailAdress.Text.Contains("@") && EmailAdress.Text.Contains("."))
@@ -284,10 +288,78 @@ namespace WS
                 errorbool = true;
                 errors += "Некорректный ввод даты\n";
             }
-            //проверка страны(потом из бд)
+            //проверка страны
             if (Country.SelectedItem != null)
-            {
+            {                
+                try
+                {
+                    //Открываем подключение
+                    connection.OpenAsync();
 
+                    //Работа с бд
+                    SqlCommand command = new SqlCommand();
+
+                    string com = "SELECT CountryCode FROM Country WHERE CountryName = '" + Country.Text + "'";
+
+                    //Получаем страны из БД
+                    command.CommandText = com;
+
+                    command.Connection = connection;
+
+                    SqlDataReader dataReader = command.ExecuteReader();
+
+                    while (dataReader.Read())
+                    {
+                        countryCode = Convert.ToString(dataReader[0]);
+                    }
+
+
+                }
+                catch (SqlException ex)
+                {
+                    //Выводим сообщение об ошибке
+                    MessageBox.Show(Convert.ToString(ex));
+                }
+                finally
+                {
+                    //В любом случае закрываем подключение
+                    connection.Close();
+                }
+
+                try
+                {
+                    //Открываем подключение
+                    connection.OpenAsync();
+
+                    //Работа с бд
+                    SqlCommand command = new SqlCommand();
+
+                    //Получаем страны из БД
+                    command.CommandText = "SELECT MAX(RunnerId) FROM Runner";
+
+                    command.Connection = connection;
+
+                    SqlDataReader dataReader = command.ExecuteReader();
+
+                    while (dataReader.Read())
+                    {
+                        runnerId = Convert.ToInt32(dataReader[0]);
+                        runnerId++;
+                    }
+
+
+                }
+                catch (SqlException ex)
+                {
+                    //Выводим сообщение об ошибке
+                    MessageBox.Show(Convert.ToString(ex));
+                }
+                finally
+                {
+                    //В любом случае закрываем подключение
+                    connection.Close();
+                    runnerId++;
+                }
             }
             else
             {
@@ -314,9 +386,8 @@ namespace WS
                     //Отправляем строки в бд
                     //-------------------------------------------------------------------------------
                     //Работа с таблицей USER
-                    string com = String.Format("INSERT INTO User" +
-                        "(Email, Password, FirstName, LastName, RoleId) " +
-                        "Values(@Email, @Password, @FirstName, @LastName, @RoleId)");
+                    string com = String.Format("INSERT INTO [User]" +
+                        "(Email, Password, FirstName, LastName, RoleId) Values(@Email, @Password, @FirstName, @LastName, @RoleId)");
 
                     //Добавляем параметры
                     SqlCommand cmd = new SqlCommand(com, this.connection);
@@ -331,17 +402,19 @@ namespace WS
 
                     //----------------------------------------------------------------------------------
                     //Работа с таблицей Runner
-                    com = String.Format("INSERT INTO Runner" +
+                    com = String.Format("SET IDENTITY_INSERT Runner ON " +
+                        "INSERT INTO Runner " +
                         "(RunnerId, Email, Gender, DateOfBirth, CountryCode) " +
-                        "Values(@RunnerId, @Email, @Gender, @DateOfBirth, @CountryCode)");
+                        "Values(@RunnerId , @Email, @Gender, @DateOfBirth, @CountryCode)" +
+                        "SET IDENTITY_INSERT Runner OFF ");
 
                     //Добавляем параметры
                     cmd = new SqlCommand(com, this.connection);
-                    cmd.Parameters.AddWithValue("@RunnerId", /*DODELAAT*/1);
+                    cmd.Parameters.AddWithValue("@RunnerId", runnerId);
                     cmd.Parameters.AddWithValue("@Email", EmailAdress.Text);
                     cmd.Parameters.AddWithValue("@Gender", SEX.Text);
                     cmd.Parameters.AddWithValue("@DateOfBirth", BirthDate.Text);
-                    cmd.Parameters.AddWithValue("@CountryCode", /*DODELAT*/1);
+                    cmd.Parameters.AddWithValue("@CountryCode", countryCode);
 
                     //Отправка
                     cmd.ExecuteNonQuery();
@@ -350,15 +423,19 @@ namespace WS
                 {
                     //Выводим сообщение об ошибке
                     MessageBox.Show(Convert.ToString(ex));
+                    errorbool = true;
                 }
                 finally
                 {
                     //В любом случае закрываем подключение
-                    connection.Close();                    
+                    connection.Close();
                 }
 
-                RegistrationForMarathon mainPage = new RegistrationForMarathon();
-                this.NavigationService.Navigate(mainPage);
+                if (!errorbool)
+                {
+                    RegistrationForMarathon mainPage = new RegistrationForMarathon();
+                    this.NavigationService.Navigate(mainPage);
+                }
             }
         }
 
