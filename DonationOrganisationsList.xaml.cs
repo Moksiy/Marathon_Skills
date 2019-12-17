@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace WS
 {
@@ -20,9 +22,51 @@ namespace WS
     /// </summary>
     public partial class DonationOrganisationsList : Page
     {
+
+        SqlConnection connection = new SqlConnection();
+
+
         public DonationOrganisationsList()
         {
             InitializeComponent();
+            AddCharity();
+        }
+
+        private async void AddCharity()
+        {
+            //Строка подключения            
+            connection.ConnectionString = @"Data Source=DESKTOP-SJE2N6P\SQLEXPRESS;Initial Catalog=Marathon;Integrated Security=True";
+
+            try
+            {
+                //Открываем подключение
+                await connection.OpenAsync();
+
+                //Работа с бд
+                SqlCommand command = new SqlCommand();
+
+                //Получаем страны из БД
+                command.CommandText = "SELECT CharityName FROM Charity";
+
+                command.Connection = connection;
+
+                SqlDataReader dataReader = command.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    Charity.Items.Add(dataReader[0]);
+                }
+            }
+            catch (SqlException ex)
+            {
+                //Выводим сообщение об ошибке
+                MessageBox.Show(Convert.ToString(ex));
+            }
+            finally
+            {
+                //В любом случае закрываем подключение
+                connection.Close();
+            }
         }
 
         /// <summary>

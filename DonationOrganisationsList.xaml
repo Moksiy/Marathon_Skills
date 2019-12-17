@@ -15,7 +15,7 @@
         <Label HorizontalContentAlignment="Center" Content="Список благотворительных организаций" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" FontSize="25" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" Width="780"/>
         <Label HorizontalContentAlignment="Center" Content="Это - список благотворительных учреждений, которые поддерживаются в " HorizontalAlignment="Left" Margin="10,79,0,0" VerticalAlignment="Top" FontSize="18" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" Width="780"/>
         <Label HorizontalContentAlignment="Center" Content="Marathon Skills 2019. Спасибо за помощь, вы поддерживаете их, спонсируя бегунов!" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top" FontSize="18" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" Width="780"/>
-        <ListView HorizontalAlignment="Left" Height="293" Margin="10,147,0,0" VerticalAlignment="Top" Width="770">
+        <ListView x:Name="Charity" HorizontalAlignment="Left" Height="293" Margin="10,147,0,0" VerticalAlignment="Top" Width="770">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
