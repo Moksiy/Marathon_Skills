@@ -22,12 +22,11 @@
         <Label HorizontalContentAlignment="Left" Content="21km Полумарафон($75)" HorizontalAlignment="Center" Margin="90,241,462,0" VerticalAlignment="Top" FontSize="17" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" Width="248"/>
         <Label HorizontalContentAlignment="Left" Content="5km Малая дистанция($20)" HorizontalAlignment="Center" Margin="90,273,462,0" VerticalAlignment="Top" FontSize="17" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" Width="248"/>
         <Label Content="Детали спонсорства" HorizontalAlignment="Left" Margin="72,305,0,0" VerticalAlignment="Top" FontSize="18" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040"/>
-        <Button Content="Регистрация" HorizontalAlignment="Left" Margin="42,420,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Регистрация" HorizontalAlignment="Left" Margin="42,420,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
         <Button Content="Отмена" HorizontalAlignment="Left" Margin="141,420,0,0" VerticalAlignment="Top" Width="75"/>
         <Label HorizontalContentAlignment="Right" Content="Взнос:" HorizontalAlignment="Center" Margin="42,339,646,0" VerticalAlignment="Top" FontSize="17" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" Width="112"/>
         <Label HorizontalContentAlignment="Right" Content="Сумма взноса:" HorizontalAlignment="Center" Margin="22,371,646,0" VerticalAlignment="Top" FontSize="17" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" Width="132"/>
-        <ComboBox HorizontalAlignment="Left" Margin="159,344,0,0" VerticalAlignment="Top" Width="179">
-            <TextBlock>дада, скоро будет из БД</TextBlock>
+        <ComboBox x:Name="CharityList" HorizontalAlignment="Left" Margin="159,344,0,0" VerticalAlignment="Top" Width="179">
         </ComboBox>
         <TextBox x:Name="Donation" HorizontalAlignment="Left" Height="26" Margin="159,372,0,0" TextWrapping="Wrap" Text="500" VerticalAlignment="Top" Width="179" FontSize="15" FontFamily="Segoe UI Semibold" Background="White" Foreground="#FF404040" PreviewMouseLeftButtonDown="Donation_PreviewMouseLeftButtonDown" DataContextChanged="Donation_DataContextChanged"/>
         <RadioButton GroupName="Var" x:Name="A" IsChecked="True" Content="" HorizontalAlignment="Left" Margin="479,214,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.181,0.395" Height="17" Width="22" Checked="A_Checked" Unchecked="A_Unchecked"/>

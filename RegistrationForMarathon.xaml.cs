@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace WS
 {
@@ -20,9 +22,51 @@ namespace WS
     /// </summary>
     public partial class RegistrationForMarathon : Page
     {
+        SqlConnection connection = new SqlConnection();
+
+        string option = "A";
+
         public RegistrationForMarathon()
         {
             InitializeComponent();
+            AddCharities();
+        }
+
+        private async void AddCharities()
+        {
+            //Строка подключения            
+            connection.ConnectionString = @"Data Source=DESKTOP-SJE2N6P\SQLEXPRESS;Initial Catalog=Marathon;Integrated Security=True";
+
+            try
+            {
+                //Открываем подключение
+                await connection.OpenAsync();
+
+                //Работа с бд
+                SqlCommand command = new SqlCommand();
+
+                //Получаем страны из БД
+                command.CommandText = "SELECT CharityName FROM Charity";
+
+                command.Connection = connection;
+
+                SqlDataReader dataReader = command.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    CharityList.Items.Add(dataReader[0]);
+                }
+            }
+            catch (SqlException ex)
+            {
+                //Выводим сообщение об ошибке
+                MessageBox.Show(Convert.ToString(ex));
+            }
+            finally
+            {
+                //В любом случае закрываем подключение
+                connection.Close();
+            }
         }
 
         /// <summary>
@@ -113,7 +157,7 @@ namespace WS
         /// <param name="e"></param>
         private void A_Checked(object sender, RoutedEventArgs e)
         {
-
+            option = "A";
         }
 
         /// <summary>
@@ -124,6 +168,7 @@ namespace WS
         private void B_Checked(object sender, RoutedEventArgs e)
         {
             Summ.Text = Convert.ToString(Convert.ToInt32(Summ.Text) + 45);
+            option = "B";
         }
 
         /// <summary>
@@ -134,6 +179,7 @@ namespace WS
         private void C_Checked(object sender, RoutedEventArgs e)
         {
             Summ.Text = Convert.ToString(Convert.ToInt32(Summ.Text) + 20);
+            option = "C";
         }
 
         /// <summary>
@@ -152,7 +198,7 @@ namespace WS
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void B_Unchecked(object sender, RoutedEventArgs e)
-        {            
+        {
             Summ.Text = Convert.ToString(Convert.ToInt32(Summ.Text) - 45);
         }
 
@@ -176,10 +222,81 @@ namespace WS
             bool errorbool = false;
             string errors = "";
             int donation = default;
-            if(int.TryParse(Donation.Text, out donation))
+            int regId = 0;
+            int runId = 0;
+            DateTime curDate = DateTime.Now;
+            int charityId = 0;
+
+            //Получение номера регистрации
+            try
             {
-                if(donation > 0)
-                {}else { errorbool = true; errors += "Некорректная сумма взноса\n"; }
+                //Открываем подключение
+                connection.OpenAsync();
+
+                //Работа с бд
+                SqlCommand command = new SqlCommand();
+
+                //Получаем страны из БД
+                command.CommandText = "SELECT MAX(RegistrationId) FROM RegistrationNew";
+
+                command.Connection = connection;
+
+                SqlDataReader dataReader = command.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    regId = Convert.ToInt32(dataReader[0]);
+                    regId++;
+                }
+            }
+            catch (SqlException ex)
+            {
+                //Выводим сообщение об ошибке
+                MessageBox.Show(Convert.ToString(ex));
+            }
+            finally
+            {
+                //В любом случае закрываем подключение
+                connection.Close();
+            }
+
+            //Получение номера нового бегуна
+            try
+            {
+                //Открываем подключение
+                connection.OpenAsync();
+
+                //Работа с бд
+                SqlCommand command = new SqlCommand();
+
+                //Получаем страны из БД
+                command.CommandText = "SELECT MAX(RunnerId) FROM Runner";
+
+                command.Connection = connection;
+
+                SqlDataReader dataReader = command.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    runId = Convert.ToInt32(dataReader[0]);
+                }
+            }
+            catch (SqlException ex)
+            {
+                //Выводим сообщение об ошибке
+                MessageBox.Show(Convert.ToString(ex));
+            }
+            finally
+            {
+                //В любом случае закрываем подключение
+                connection.Close();
+            }
+
+            if (int.TryParse(Donation.Text, out donation))
+            {
+                if (donation > 0)
+                { }
+                else { errorbool = true; errors += "Некорректная сумма взноса\n"; }
             }
             else { errorbool = true; errors += "Некорректная сумма взноса\n"; }
             if (km21.IsChecked != null || km42.IsChecked != null || km5.IsChecked != null)
@@ -190,7 +307,44 @@ namespace WS
             {
                 errorbool = true; errors += "Не выбран ни один вид марафонов\n";
             }
-            if(errorbool)
+            if (CharityList.Text != "" || CharityList.Text != " ")
+            {
+                //Получение id благотворительной организации
+                try
+                {
+                    //Открываем подключение
+                    connection.OpenAsync();
+
+                    //Работа с бд
+                    SqlCommand command = new SqlCommand();
+
+                    //Получаем страны из БД
+                    command.CommandText = "SELECT CharityId FROM Charity WHERE CharityName = '" + CharityList.Text + "'";
+
+                    command.Connection = connection;
+
+                    SqlDataReader dataReader = command.ExecuteReader();
+
+                    while (dataReader.Read())
+                    { charityId = Convert.ToInt32(dataReader[0]); }
+                }
+                catch (SqlException ex)
+                {
+                    //Выводим сообщение об ошибке
+                    MessageBox.Show(Convert.ToString(ex));
+                }
+                finally
+                {
+                    //В любом случае закрываем подключение
+                    connection.Close();
+                }
+
+            }
+            else
+            {
+                errorbool = true; errors += "Не выбрана благотворительная организация\n";
+            }
+            if (errorbool)
             {
                 MessageBox.Show(errors);
             }
@@ -198,11 +352,57 @@ namespace WS
             {
                 //регистрация
 
+                try
+                {
+                    //Открываем подключение
+                    connection.OpenAsync();
 
+                    //Работа с бд
+                    SqlCommand command = new SqlCommand();
+
+                    //Отправляем строки в бд
+                    //-------------------------------------------------------------------------------
+                    //Работа с таблицей RegistrationNew
+                    string com = String.Format("SET IDENTITY_INSERT Runner ON " +
+                        "INSERT INTO [RegistrationNew]" +
+                        "(RegistrationId, RunnerId, RegistrationDateTime, RaceKitOptionId, RegistrationStatusId, Cost, " +
+                        "CharityId, Sponsorshiptarget) " +
+                        "Values(@RegistrationId, @RunnerId, @RegistrationDateTime, @RaceKitOptionId, " +
+                        "@RegistrationStatusId, @Cost, @CharityId, @Sponsorshiptarget)" +
+                        " SET IDENTITY_INSERT Runner OFF ");
+
+                    //Добавляем параметры
+                    SqlCommand cmd = new SqlCommand(com, this.connection);
+                    cmd.Parameters.AddWithValue("@RegistrationId", regId);
+                    cmd.Parameters.AddWithValue("@RunnerId", runId);
+                    cmd.Parameters.AddWithValue("@RegistrationDateTime", curDate);
+                    cmd.Parameters.AddWithValue("@RaceKitOptionId", option);
+                    cmd.Parameters.AddWithValue("@RegistrationStatusId", 2);
+                    cmd.Parameters.AddWithValue("@Cost", 1);
+                    cmd.Parameters.AddWithValue("@CharityId", charityId);
+                    cmd.Parameters.AddWithValue("@Sponsorshiptarget", Convert.ToInt32(Summ.Text));
+
+                    //Отправка
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    //Выводим сообщение об ошибке
+                    MessageBox.Show(Convert.ToString(ex));
+                    errorbool = true;
+                }
+                finally
+                {
+                    //В любом случае закрываем подключение
+                    connection.Close();
+                }
 
                 //Подтверждение регистрации
-                RegConfirm mainPage = new RegConfirm();
-                this.NavigationService.Navigate(mainPage);
+                if (!errorbool)
+                {
+                    RegConfirm mainPage = new RegConfirm();
+                    this.NavigationService.Navigate(mainPage);
+                }
             }
         }
 
@@ -238,6 +438,11 @@ namespace WS
         private void Donation_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             //Popozhe...
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
